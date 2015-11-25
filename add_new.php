@@ -10,16 +10,14 @@
 	$std["fname"]			=	 $_POST["new-fname"];
 	$std["lname"] 			=	 $_POST["new-lname"];
 	$std["year_level"] 		=	 $_POST["new-yrlvl"];
-	$std["username"] 		=	 $_POST["new-username"];
-	$std["password"] 		=	 $_POST["new-pass"];
 	$std["date_registered"] =	 "NOW()";
 	$std["parent_id"] 		=	 $parentId;
 
-	$username 				=	 $_POST["new-username"];
-	$usernameChecked 		=	 "SELECT username FROM tblstudents where username='$username'";
-	$stdUsername 					=	 $db->query($usernameChecked);
+	// $username 				=	 $_POST["new-username"];
+	// $usernameChecked 		=	 "SELECT username FROM tblstudents where username='$username'";
+	// $stdUsername 			=	 $db->query($usernameChecked);
 
-	if ($record = $db->fetch_array($stdUsername)==null) {//check if username is available
+	// if ($record = $db->fetch_array($stdUsername)==null) {//check if username is available
 
 		$checkSlot = "SELECT student_id, student_id2, student_id3 FROM tblparents where id='$parentId'"; //check slot available
 		$queryCheck = $db->query($checkSlot);
@@ -53,11 +51,11 @@
 			
 		}
 
-	}else{
-		echo "<script>
-					alert('Username already taken, please try another'); 
-					window.history.go(-1);
-			  </script>";
-	}
+	// }else{
+	// 	echo "<script>
+	// 				alert('Username already taken, please try another'); 
+	// 				window.history.go(-1);
+	// 		  </script>";
+	// }
 
  ?>

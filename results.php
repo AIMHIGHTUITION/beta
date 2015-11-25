@@ -282,12 +282,26 @@
 	<script src="js/custom.js"></script>
 	   <script type="text/javascript">
 			  	var arrListId = [];
-			  	 var counterMin = 5;
+			  	 var counterMin = 0;
 			  	  var statFname = "";
 			  	  var hideMe = "";
 		        $(document).ready(function(){
 			        
-			        displayCompletedExam = function(element){
+			        
+			        showOthers = function(me){
+				        var nextLoad = me*2;
+				        $("#load"+me).hide();
+				        $("#load"+nextLoad).show();
+
+						var i = 0;
+						var tmpCounter = me;
+						while(i < 5){
+							$("#"+tmpCounter).show();
+							tmpCounter++;
+							i++;
+						}
+					}
+			        displayCompletedExam = function(element,index){
 				        console.log(element);
 				        
 				        var arrDataTime = element.finished_date.split(" ");
@@ -368,23 +382,26 @@
 					
 					console.log("statFname " + statFname);
 					console.log("fname " + fname);
-					if(statFname != fname){
-						hideMe = "";
-					}
+				
 					
-					if(counterMin <= 0 && statFname == fname){
+					if(counterMin%5 == 0 && statFname == fname){
 
 						
-						loadMore = '<tr style="'+hideMe+'"><td colspan="0" style=="text-align:center;cursor:pointer;"><div style="text-aling:center;">Load More</div></td></tr>'	
-						counterMin = 5;
+						loadMore = '<tr id="load'+index+'" style="'+hideMe+'"><td colspan="0" style=="text-align:center;cursor:pointer;"><div style="text-align:center;cursor:pointer" onclick=showOthers("'+index+'")>Load More</div></td></tr>'	
+
 						console.log("LOAD MORE------------------------");
 						hideMe = "display:none;"; 
+					}
+					
+						if(statFname != fname){
+						hideMe = "";
+						counterMin = 1;
 					}else{
-						counterMin = counterMin - 1;
+						counterMin++;
 					}
 					
 					
-				        $("#tblResult").append(myname+'<tr style="'+hideMe+'">'+
+				        $("#tblResult").append(myname+'<tr id="'+index+'" style="'+hideMe+'">'+
 							'		<td>'+subjectype+'<br />'+supplementary_subjectype+'</td>'+
 							'		<td>'+date+'</td>'+
 							'		<td>'+time+'</td>'+
@@ -407,7 +424,7 @@
 			            success: function (data) { 
 			                $.each(data, function(index, element) {
 				                	
-			        	        displayCompletedExam(element);
+			        	        displayCompletedExam(element,index);
 			        	        statFname = element.fname;
 			        	        arrListId.push(element.fname);
 			                });

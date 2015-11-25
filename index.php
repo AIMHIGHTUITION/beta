@@ -4,7 +4,6 @@
 
 	if($_SESSION['id'] == "" || $_SESSION['type'] == ""){
 		header("Location: login.php");
-		exit();
 	}
 	$id = $_SESSION['id']; //login user ID
 	$sessionType = $_SESSION['type']; 
