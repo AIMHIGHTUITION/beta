@@ -1,0 +1,30 @@
+SELECT student_id, GROUP_CONCAT(DISTINCT question_id SEPARATOR ',') AS QUESTION_ID,GROUP_CONCAT(DISTINCT learning_topic SEPARATOR ',') AS learning_topic,GROUP_CONCAT(DISTINCT major_outcome_id SEPARATOR ',') AS major_outcome_id,
+       100 * SUM(status='correct')   / COUNT(status) AS percent_correct, 
+       100 * SUM(status='incorrect') / COUNT(status) AS percent_incorrect,
+       GROUP_CONCAT(DISTINCT learning_category_result SEPARATOR ',') AS learning_category_result
+
+       
+  FROM (
+  	    Select E.status as status, E.student_id as student_id, E.question_id as question_id, A.learning_topic_id as learning_topic , C.major_outcome_id as major_outcome_id,
+  	    100 * SUM(E.status='correct' and A.learning_topic_id) / COUNT(E.status) AS learning_category_result
+  	    from tbllearningcategories as A 
+		left outer join tblmajoroutcome as B on A.id=B.learning_categories_id
+		left outer join tblminoroutcome as C on B.id=C.major_outcome_id
+		left outer join tblquestions as D on C.id=D.minor_outcome_id
+		right outer join tbltemporarygenexam as E on D.id=E.question_id
+		Where E.student_id='3'
+          /* your entire query from your question */
+       ) AS results
+       
+       
+       
+       
+       
+        Select E.status as status, E.student_id as student_id, E.question_id as question_id, A.learning_topic_id as learning_topic , C.major_outcome_id as major_outcome_id,
+  	    count()AS learning_category_result
+  	    from tbllearningcategories as A 
+		left outer join tblmajoroutcome as B on A.id=B.learning_categories_id
+		left outer join tblminoroutcome as C on B.id=C.major_outcome_id
+		left outer join tblquestions as D on C.id=D.minor_outcome_id
+		right outer join tbltemporarygenexam as E on D.id=E.question_id
+		Where E.student_id='3'
