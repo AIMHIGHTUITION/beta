@@ -527,7 +527,8 @@
 							</div>
 							<!-- Third accordion -->
 							<div class="panel panel-default">
-								<div class="panel-heading accordion-toggle assmntTitle" data-toggle="collapse" data-parent="#accordion2" href="#ssassmnt3">
+								<div class="panel-heading accordion-toggle assmntTitle" data-toggle="collapse" data-parent="#accordion2">
+									 <!-- href="#ssassmnt3" -->
 									<h5 class="panel-title">
 										<a>English Diagnostic Test...<span class="comesoon">Coming Soon!</span></a>
 									</h5>
@@ -803,7 +804,7 @@
 		})
 		//Function to show Recent Assessment
 		showRecentResult = function(element){
-//			$("#recentAssessPanel").html();
+		//$("#recentAssessPanel").html();
 				var assmentTitleStd = element.subject+' '+element.type;
 				var studentName = element.firstname;
 			
