@@ -156,7 +156,7 @@
 								<div class="widget-container">									
 									<p class="pull-right"><i class="glyphicon glyphicon-bell"></i> Time remaining <span id="timer"></span>									
 									</p>																
-									<div>
+									<div id="mathsquestions">
 										<div id="contentQuestion" style="min-height: 300px;">
 											<div id=""><h3 id="titleQuestion"></h3></div>
 											<img id="imgSource" src="" />
@@ -176,6 +176,26 @@
 											</div>
 										</div>		
 									</div>
+									<!-- <div id="learningSkills">
+										<div id="contentQuestion">
+											<div id=""><h3 id="titleQuestion"></h3></div>
+											<img id="imgSource" src="" />
+											<div id=""><h4 id="instructionTitle">Choose your Answer</h4></div>
+											<div id="choices" class="choices"></div>
+										</div>
+										<div>
+											<div id="btnNext" style="background-color: blue; font-size: 17px; color: white; text-align: center; padding: 7px; width: 60px; margin: 9px; cursor: pointer;">NEXT</div>
+											<div id="btnSkip" style="background-color: blue; font-size: 17px; color: white; text-align: center; padding: 7px; width: 60px; margin: 9px; cursor: pointer;">SKIP</div>											
+											<div class="container" style="margin-left: 170px;">
+												<div id="txtProgress">Your Progress</div>
+												<div id="styled"></div>
+											</div>
+											<div class="container" style="width: 300px; margin-top: -49px; margin-left: 659px;">
+												<div id="txtProgress2"></div>
+												<div id="supplementaryBar"></div>
+											</div>
+										</div>		
+									</div> -->
 								</div>
 								<p style="margin-top: 57px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 								<div id="pause" style="display: block; background-color: orange; width: 12%; text-align: center; color: black; padding: 10px; font-size: 23px; cursor: pointer;">Pause and Return later</div>	
