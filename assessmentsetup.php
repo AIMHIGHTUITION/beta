@@ -130,8 +130,7 @@
 									<td class="cell-sm">Action</td>
 								</tr>
 							</thead>
-							<tbody id="recentAssessPanel">
-								
+							<tbody id="recentAssessPanel">								
 							</tbody>
 						</table>
 					</div>	
@@ -160,8 +159,7 @@
 
 								$studentUsername = "SELECT fname FROM tblstudents where id='$id'";
 								$record = $db->query_first($studentUsername);
-								echo $record['fname'].",";								
-
+								echo $record['fname'].",";		
 							}
 							?>
 							just click the assessment title to learn more.
@@ -793,8 +791,7 @@
 							var r = confirm("Please complete your current exam in progress before starting a new one");
 						}
 					});
-				
-	
+
 			}else{
 
 				var assmentTitleStd = $(this).parent().closest(".panel").find(".panel-title a").text();	
