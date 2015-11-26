@@ -387,7 +387,7 @@
 					if(counterMin%5 == 0 && statFname == fname){
 
 						
-						loadMore = '<tr id="load'+index+'" style="'+hideMe+'"><td colspan="0" style=="text-align:center;cursor:pointer;"><div style="text-align:center;cursor:pointer" onclick=showOthers("'+index+'")>Load More</div></td></tr>'	
+						loadMore = '<tr id="load'+index+'" style="'+hideMe+'"><td colspan="0" style=="text-align:center;cursor:pointer;"><div style="text-align:center;cursor:pointer" onclick=showOthers("'+index+'")>Click to see more results</div></td></tr>'	
 
 						console.log("LOAD MORE------------------------");
 						hideMe = "display:none;"; 
