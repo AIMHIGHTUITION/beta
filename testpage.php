@@ -255,7 +255,7 @@ $( document ).ready(function() {
 			console.log("Question Number "+num)
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
-			$("#titleQuestion").html(element.question);
+			$("#titleQuestion").html(currentQuestionID+". "+element.question);
 			var choices = element.choices;
 			console.log(num+"Choices - "+choices);
 			var arrChoices = choices.split(",");
