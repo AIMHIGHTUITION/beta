@@ -13,14 +13,7 @@
 
 	$id = $_SESSION['id']; //login user ID
 	$sessionType = $_SESSION['type']; 
-	
-	
-	
-	
-	
-	
-	
-	
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en" >
@@ -31,23 +24,17 @@
 	<meta name="keywords" content="Online Assessment, Test Prep, Tutors, Review Center" />
 	<meta name="author" content="Aim High Tuition"/>
 	<link rel="shortcut icon" href="favicon.png">
-
 	<title>Student Diagnostic | Assessment</title>
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.css" rel="stylesheet">
-
 	<!-- Daneden animate CSS -->
 	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/animate.min.css" rel="stylesheet">
-
 	<!-- Custom styles for this template -->
 	<link href="css/style.css" rel="stylesheet">
-
 	<!-- Data-Table style -->
 	<link href="css/jquery.dataTables.css" rel="stylesheet">
-	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
-	
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">	
 	<style>
 		.choices input{
 		cursor: pointer;
@@ -137,7 +124,6 @@ width: 20px;
   </form>
 </div>
 
-
 	<div class="container"><!-- Main Container starts here -->
 		<div class="row navbar-fixed-top" id="top-navigation">
 			<header class="col-sm-12 col-md-8"><!-- Navigation header starts here -->
@@ -150,34 +136,8 @@ width: 20px;
 						</button>
 						<a class="navbar-brand" href="index.php"><i class="glyphicon glyphicon-signal"></i>Student Diagnostics</a>
 					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="index.php">Dashboard</a></li>
-							<?php  
-							$loggedUser = 2;
-							if ($sessionType == 't') {
-								echo "<li><a href=\"student_pl.php\">Student Program</a></li>";		
-								echo "<li><a href=\"tutor_resources.php\">Resources</a></li>";						
-							}else{
-								if ($sessionType == 'p') {
-									$loggedUser = 1;								
-								}else if($sessionType == 's'){
-									$loggedUser = 3;									
-								}
-								echo "<li><a href=\"assessmentsetup.php\">Assessments</a></li>";
-								echo "<li><a href=\"results.php\">Results</a></li>";
-								echo "<li><a href=\"resources.php\">Resources</a></li>";									
-							}
-							?>							
-						</ul>						
-					</div><!--/.nav-collapse -->
 				</div>			
 			</header><!-- Navigation header ends here -->
-
-			<div class="input-group col-md-3" id="custom-search">
-				<input type="text" class="form-control" placeholder="Search...">
-				<span class="input-group-btn"><button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button></span>
-			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-1 nav-user">
 				<ul class="nav navbar-nav pull-right">
