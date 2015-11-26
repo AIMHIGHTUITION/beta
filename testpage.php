@@ -126,7 +126,7 @@ width: 20px;
 
 	<div class="container"><!-- Main Container starts here -->
 		<div class="row navbar-fixed-top" id="top-navigation">
-			<header class="col-sm-12 col-md-8"><!-- Navigation header starts here -->
+			<header class="col-sm-12 col-md-11"><!-- Navigation header starts here -->
 				<div class="navbar navbar-default">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
