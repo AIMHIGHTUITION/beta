@@ -443,48 +443,48 @@ $( document ).ready(function() {
 		        					$('#supplementaryBar').multiprogressbar({
 		        						parts:[{value: progressSupp, text: true, barClass: "gradient", textClass: "redText"}]
 		        					});
-/*
+									/*
 						        	$('#styleSupplementary').multiprogressbar({
 										parts:[{value: 0, text: true, barClass: "blue", textClass: "redText"}]
 									});
-*/
+									*/
 
-counterAnswer++;
-currentQuestion++;
-$("#counterAnswerTxt").html(counterAnswer);
-showQuestion(currentQuestion);
-}
-});
-}
-else
-{
-	currentQuestion++;
-	counterAnswer++;
-	showQuestion(currentQuestion)
-	$("#counterAnswerTxt").html(counterAnswer);
-}
-}
-else
-{
-	dialog3.dialog( "open" );
-}
-}
-$("#btnSkip").click(function()
-{
-	currentAnswerValue = "skip"
-	submitAnswer(currentAnswerValue)					 
-});
+		counterAnswer++;
+		currentQuestion++;
+		$("#counterAnswerTxt").html(counterAnswer);
+		showQuestion(currentQuestion);
+		}
+		});
+		}
+		else
+		{
+			currentQuestion++;
+			counterAnswer++;
+			showQuestion(currentQuestion)
+			$("#counterAnswerTxt").html(counterAnswer);
+		}
+		}
+		else
+		{
+			dialog3.dialog( "open" );
+		}
+		}
+		$("#btnSkip").click(function()
+		{
+			currentAnswerValue = "skip"
+			submitAnswer(currentAnswerValue)					 
+		});
 
-$("#btnNext").click(function()
-{	
-	submitAnswer(currentAnswerValue)
-});
+		$("#btnNext").click(function()
+		{	
+			submitAnswer(currentAnswerValue)
+		});
 
-$("#counterAnswerTxt").html(counterAnswer);
-showQuestion(currentQuestion);
+		$("#counterAnswerTxt").html(counterAnswer);
+		showQuestion(currentQuestion);
 
-}
-});
+		}
+		});
 		//Save Answer temporarily
 		saveAnswer = function(me){
 			var id = arrQuestions[currentQuestion].id;
@@ -531,125 +531,115 @@ showQuestion(currentQuestion);
 			});
 		}
 
-/*
-		$("#btnFlag").click(function(){
+		/*
+				$("#btnFlag").click(function(){
+					
+					var mymessage = prompt("Please tell us what's wrong with this question.", "");
+		if (mymessage != null) {
+			var id = arrQuestions[currentQuestion].id;
+					$.post( "_flagforreview.php", { questionId: id, flagged_message:mymessage})
+					.done(function( data ) {	
+						$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
+					});
+		}
 			
-			var mymessage = prompt("Please tell us what's wrong with this question.", "");
-if (mymessage != null) {
-	var id = arrQuestions[currentQuestion].id;
-			$.post( "_flagforreview.php", { questionId: id, flagged_message:mymessage})
+				});
+		*/
+
+		///Dialog
+		var dialog,dialog2, form, flagged_message = $( "#flagged_message" )
+
+		function addUser() {
+
+			var id = arrQuestions[currentQuestion].id;
+			$.post( "_flagforreview.php", { questionId: id, flagged_message:flagged_message.val()})
 			.done(function( data ) {	
 				$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
+				dialog.dialog( "close" );
 			});
-}
 
-
-		
-		});
-*/
-
-///Dialog
-var dialog,dialog2, form, flagged_message = $( "#flagged_message" )
-
-function addUser() {
-
-	var id = arrQuestions[currentQuestion].id;
-	$.post( "_flagforreview.php", { questionId: id, flagged_message:flagged_message.val()})
-	.done(function( data ) {	
-		$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
-		dialog.dialog( "close" );
-	});
-
-	return true;
-}
-pauseAssessment = function(){
-	dialog2.dialog( "close" );
-	window.location.href = "assessmentsetup.php";
-	clearTimeout(myVar);
-	$(".widget-container").hide();
-	$("#pause").html("Resume");
-}
-dialog = $( "#dialog-form" ).dialog({
-	autoOpen: false,
-	height: 300,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Report": addUser,
-		Cancel: function() {
-			dialog.dialog( "close" );
+			return true;
 		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
-
-form = dialog.find( "form" ).on( "submit", function( event ) {
-	event.preventDefault();
-	addUser();
-});
-
-dialog2 = $( "#dialogPause" ).dialog({
-	autoOpen: false,
-	height: 200,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Yes": pauseAssessment,
-		"No": function() {
+		pauseAssessment = function(){
 			dialog2.dialog( "close" );
+			window.location.href = "assessmentsetup.php";
+			clearTimeout(myVar);
+			$(".widget-container").hide();
+			$("#pause").html("Resume");
 		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
+		dialog = $( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Report": addUser,
+				Cancel: function() {
+					dialog.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
-dialog3 = $( "#dialogAlert" ).dialog({
-	autoOpen: false,
-	height: 150,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Ok": function() {
-			dialog3.dialog( "close" );
-		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
+		form = dialog.find( "form" ).on( "submit", function( event ) {
+			event.preventDefault();
+			addUser();
+		});
 
-form = dialog.find( "form" ).on( "submit", function( event ) {
-	event.preventDefault();
-	addUser();
-});
+		dialog2 = $( "#dialogPause" ).dialog({
+			autoOpen: false,
+			height: 200,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Yes": pauseAssessment,
+				"No": function() {
+					dialog2.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
+		dialog3 = $( "#dialogAlert" ).dialog({
+			autoOpen: false,
+			height: 150,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Ok": function() {
+					dialog3.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
+		form = dialog.find( "form" ).on( "submit", function( event ) {
+			event.preventDefault();
+			addUser();
+		});
 
+		$("#btnFlag").click(function(){
+			dialog.dialog( "open" );
+		})
 
-$("#btnFlag").click(function(){
-	dialog.dialog( "open" );
-})
+		$("#pause").click(function(){
+			if($("#pause").html() == "Resume"){
+				$("#pause").html("Pause and Return later");
+				$(".widget-container").show();
+				myVar = setInterval(myTimer, 1000);
 
-$("#pause").click(function(){
-	if($("#pause").html() == "Resume"){
-		$("#pause").html("Pause and Return later");
-		$(".widget-container").show();
-		myVar = setInterval(myTimer, 1000);
+			}else{
+				dialog2.dialog( "open" );
+			}
+		});
 
-	}else{
-		dialog2.dialog( "open" );
-	}
-});
-
-
-
-
-
-
-});
+		});
 </script>
 </body>
 </html>
