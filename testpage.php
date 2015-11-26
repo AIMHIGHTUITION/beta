@@ -252,7 +252,7 @@ $( document ).ready(function() {
 		//Function to show Questions
 		showQuestion = function(num)
 		{	
-			console.log("Question Number "+num)
+			console.log("Question Number "+num);
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
 			$("#titleQuestion").html(currentQuestionID+". "+element.question);
