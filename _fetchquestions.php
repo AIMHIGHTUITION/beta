@@ -8,7 +8,8 @@
 	$studenId = $_POST["id"];
 	$year = $_POST["year"];
 	$asstype = $_POST["asstype"];
-	
+	$exmtle = $_POST["exmtle"];
+
 	$sqlHasExam = "Select B.id as QUESTION_ID, B.question as question, B.choices as choices, A.answer as answer,A.time_to_answer as time_to_answer,B.flagged_for_review as flagged_for_review  from tbltemporarygenexam as A left outer join tblquestions as B on A.question_id=B.id where A.student_id='".$studenId."' and assessment_type_id='".$asstype."' and A.status IS NULL ";
 	
 	//Done Question in Primary
@@ -26,7 +27,6 @@
 // echo $sqlDone;
  	$rowsDoneSupplementary = $db->query($sqlDoneSupplementary);
  	$resultDoneSupplementary = $db->fetch_array($rowsDoneSupplementary);
- 	
  	
  	//Total Questions in Primary	
 	$sqlallQuestion = "Select count(A.question_id) as totalPrimary  from tbltemporarygenexam as A left outer
@@ -50,8 +50,7 @@
 		$resultDone["donePrimary"] = 0;
 	}
 	
-	while($recordGenExam = $db->fetch_array($rowHasExam))
-	{
+	while($recordGenExam = $db->fetch_array($rowHasExam)){
 		$details = array
 			(
 				'id' => $recordGenExam["QUESTION_ID"],
@@ -81,8 +80,7 @@
 
 		$row = $db->query($sql);
 		
-		while ($record = $db->fetch_array($row)) 
-		{
+		while ($record = $db->fetch_array($row)) {
 
 			$data["student_id"] = $studenId;
 			$data["question_id"] = $record["id"];

@@ -149,8 +149,8 @@
 		<div class="col-sm-12 col-md-10 sign-in animated flipInY">
 			<div id="signup" class="lock-screen" >
 				<div id="assmnttitle" class="title icon-space"><i class="glyphicon glyphicon-bookmark"></i> <?php echo $_GET['exmtle']; ?></div>
-				<form action="/signin" method="post" class="form-stacked">
-					<fieldset>
+				<form action="#" method="post" class="form-stacked">
+					<fieldset class="customHr">
 						<div class="col-sm-12 col-md-12">
 							<div class="widget-box" >
 								<div class="widget-container">									
@@ -205,25 +205,25 @@
 											</thead>									
 											<tbody id="learningSQ">
 												<tr>
-													<td>Question1</td>
+													<td id="titleQuestion"></td>
 													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td>Question2</td>
+													<td id="titleQuestion"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td>Question3</td>
+													<td id="titleQuestion"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td>Question4</td>
+													<td id="titleQuestion"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios3" value="option3"></td>
@@ -231,13 +231,13 @@
 											</tbody>
 										</table>
 										<div class="text-center container">
-											<div id="txtProgress">Your Progress</div>
-											<div id="styled"></div>
+											<div id="txtProgress"></div>
+											<div id="styled" class="progress progress-striped active"></div>
 										</div>
 									</div>
-								</div>
-								<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
-								<p style="margin-top: 7px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
+									<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
+									<p><a id="btnFlag"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
+								</div>								
 							</div>
 						</div>								
 					</fieldset>
@@ -408,33 +408,27 @@ $( document ).ready(function() {
 		$.ajax({ 
 			type: 'POST', 
 			url: '_fetchquestions.php', 
-			data: { action: "getQuestions", id: Studentid,year:yearLevel,asstype:asstype	}, 
+			data: { action: "getQuestions", id: Studentid,year:yearLevel,asstype:asstype, exmtle:exmtle	}, 
 			dataType: 'json',
 			success: function (data) { 
 				$.each(data, function(index, element){
 					arrQuestions.push(element);
-					if(element.donePrimary != "")
-					{
+					if(element.donePrimary != ""){
 						tmpdonePrimary = element.donePrimary;
 					}
 					totalPrimary = element.totalPrimary;
 					totalSupplementary = element.totalSupplementary;
 					counterSupplementary = element.doneSupplementary;
 					if(totalSupplementary != "0"){
-						isSupplementary = true;
-						
+						isSupplementary = true;	
 					}
-
 					if(totalPrimary == "0"){
 						tmpTotal = index;
 					}
 				});
-
-				if(tmpTotal != 0)
-				{
+				if(tmpTotal != 0){
 					totalPrimary = parseInt(tmpTotal)+1;
 				}
-
 				currentQuestionID = arrQuestions[0].id;
 				counterAnswer = parseInt(tmpdonePrimary)+1;
 				myVar = setInterval(myTimer, 1000);
@@ -443,8 +437,7 @@ $( document ).ready(function() {
 		        counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 		        
 		        submitAnswer = function(answer){
-		        	if(answer != "")
-		        	{
+		        	if(answer != ""){
 		        		saveMyAnswer();
 		        		$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i>See a problem with this question? Click here to report');
 
@@ -455,17 +448,13 @@ $( document ).ready(function() {
 		        			if(counterSupplementary == totalSupplementary ){
 		        				isSubmitAnswer = true;
 		        			}
-
 		        		}else{
 		        			if(counterAnswer == totalPrimary ){
-
 		        				isSubmitAnswer = true;
 		        			}
-
 		        		}
 
-		        		if(isSubmitAnswer )
-		        		{			
+		        		if(isSubmitAnswer ){			
 		        			if(exmtle.indexOf("Diagnostic") !== -1){
 		        				yearLevel = yrlvl - 2;
 		        			}else{
@@ -488,8 +477,7 @@ $( document ).ready(function() {
 		        					}else{
 
 		        						$.each(data, function(index, element) {
-		        							if(element.message == "success")
-		        							{
+		        							if(element.message == "success"){
 		        								currentQuestion--;
 		        								$(".widget-container").html("<h1>Congratulation. Your Exam result is "+element.result+" / "+tmpCounterAnswer+"</h1>");
 		        								$(".widget-container").append("<br/><h2><a href='results.php?id="+element.rowId+"'>Click Here to View Detailed Results and Download your personalized Report</a></h2>");
@@ -576,8 +564,7 @@ $( document ).ready(function() {
 			});
 		}
 		
-		function myTimer() 
-		{
+		function myTimer(){
 			var currentTimer = arrQuestions[currentQuestion].time_to_answer;
 			if(currentTimer == undefined || currentTimer == NaN || currentTimer == ""){
 				currentTimer = 1;
