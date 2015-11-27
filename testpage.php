@@ -211,22 +211,34 @@
 													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td id="titleQuestion"></td>
+													<td id="titleQuestion1"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td id="titleQuestion"></td>
+													<td id="titleQuestion2"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
-													<td id="titleQuestion"></td>
+													<td id="titleQuestion3"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios1" value="option1"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios2" value="option2"></td>
 													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios3" value="option3"></td>
+												</tr>
+												<tr>
+													<td id="titleQuestion4"></td>
+													<td><input type="radio" name="optionsRadios4" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios4" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios4" class="form-control" id="optionsRadios3" value="option3"></td>
+												</tr>										
+												<tr>
+													<td id="titleQuestion5"></td>
+													<td><input type="radio" name="optionsRadios5" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios5" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios5" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>
 											</tbody>
 										</table>
@@ -328,6 +340,11 @@ $( document ).ready(function() {
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
 			$("#titleQuestion").html(currentQuestionID+". "+element.question);
+			$("#titleQuestion1").html(currentQuestionID+". "+element.question);
+			$("#titleQuestion2").html(currentQuestionID+". "+element.question);
+			$("#titleQuestion3").html(currentQuestionID+". "+element.question);
+			$("#titleQuestion4").html(currentQuestionID+". "+element.question);
+			$("#titleQuestion5").html(currentQuestionID+". "+element.question);
 			var choices = element.choices;
 			//console.log(num+"Choices - "+choices);
 			var arrChoices = choices.split(",");
