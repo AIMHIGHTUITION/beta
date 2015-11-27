@@ -796,7 +796,6 @@
 			}else{
 
 				var assmentTitleStd = $(this).parent().closest(".panel").find(".panel-title a").text();	
-
 				window.location = "testpage.php?type='"+assessment_typeid+"'&id=<?php echo"$id"; ?>&yrlvl=<?php echo"$yearLvl"; ?>&exmtle="+assmentTitleStd;
 
 			}

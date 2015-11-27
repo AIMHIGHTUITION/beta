@@ -154,7 +154,7 @@
 						<div class="col-sm-12 col-md-12">
 							<div class="widget-box" >
 								<div class="widget-container">									
-									<p class="pull-right"><i class="glyphicon glyphicon-bell"></i> Time remaining <span id="timer"></span>									
+									<p id="examTimer" class="pull-right"><i class="glyphicon glyphicon-bell"></i> Time remaining <span id="timer"></span>									
 									</p>																
 									<div id="mathsquestions">
 										<div id="contentQuestion" style="min-height: 300px;">
@@ -176,16 +176,15 @@
 											</div>
 										</div>		
 									</div>
-									<!-- <div id="learningSkills">
-										<div id="contentQuestion">
-											<div id=""><h3 id="titleQuestion"></h3></div>
-											<img id="imgSource" src="" />
-											<div id=""><h4 id="instructionTitle">Choose your Answer</h4></div>
+									<div id="learningSkills" class="hidesometin">
+										<!-- <div id="contentQuestion">											
+											<div id=""><h3 id="instructionTitle2"></h3></div>
+											<div id=""><h4 id="titleQuestion"></h4></div>
 											<div id="choices" class="choices"></div>
 										</div>
 										<div>
-											<div id="btnNext" style="background-color: blue; font-size: 17px; color: white; text-align: center; padding: 7px; width: 60px; margin: 9px; cursor: pointer;">NEXT</div>
-											<div id="btnSkip" style="background-color: blue; font-size: 17px; color: white; text-align: center; padding: 7px; width: 60px; margin: 9px; cursor: pointer;">SKIP</div>											
+											<div id="btnSkip" class="btn btn-warning">Skip</div>
+											<div id="btnNext" class="btn btn-primary">Next</div>																						
 											<div class="container" style="margin-left: 170px;">
 												<div id="txtProgress">Your Progress</div>
 												<div id="styled"></div>
@@ -194,11 +193,51 @@
 												<div id="txtProgress2"></div>
 												<div id="supplementaryBar"></div>
 											</div>
-										</div>		
-									</div> -->
+										</div> -->		
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<td><h3 id="instructionTitle2"></h3></td>
+													<td class="col-md-1"><h4>Yes</h4></td>
+													<td class="col-md-1"><h4>Maybe</h4></td>
+													<td class="col-md-1"><h4>No</h4></td>
+												</tr>
+											</thead>									
+											<tbody>
+												<tr>
+													<td><i class="glyphicon glyphicon-transfer"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-ok"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center container">
+											<div id="txtProgress">Your Progress</div>
+											<div id="styled"></div>
+										</div>
+									</div>
 								</div>
-								<p style="margin-top: 57px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
-								<div id="pause" style="display: block; background-color: orange; width: 12%; text-align: center; color: black; padding: 10px; font-size: 23px; cursor: pointer;">Pause and Return later</div>	
+								<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
+								<p style="margin-top: 17px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 							</div>
 						</div>								
 					</fieldset>
@@ -254,8 +293,22 @@ $( document ).ready(function() {
 		var counterSupplementary = 0;
 		var isSupplementary = false;
 
-		function timer() 
-		{
+		var stdyrlvl = parseInt(yrlvl);
+
+		// this is for learning style
+		if (exmtle == "Learning Style") {
+			$("#mathsquestions").remove();
+			$("#examTimer").addClass("hidesometin");
+			// $("#qnumbering").addClass("hidesometin");
+			$("#learningSkills").removeClass("hidesometin");
+		};
+		if (stdyrlvl<=6) {
+			$("#instructionTitle2").append("Questions for Children: ");
+		}else{
+			alert("this is for secondary");
+		};
+
+		function timer(){
 			count = count - 1;
 			if (count == -1) {
 				clearInterval(counter);
@@ -270,14 +323,13 @@ $( document ).ready(function() {
 		}
 
 		//Function to show Questions
-		showQuestion = function(num)
-		{	
-			console.log("Question Number "+num);
+		showQuestion = function(num){	
+			//console.log("Question Number "+num);
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
 			$("#titleQuestion").html(currentQuestionID+". "+element.question);
 			var choices = element.choices;
-			console.log(num+"Choices - "+choices);
+			//console.log(num+"Choices - "+choices);
 			var arrChoices = choices.split(",");
 			$("#choices").html("");
 			var imgsrc = "math assessment img/img_"+element.id+".JPG";
@@ -295,7 +347,7 @@ $( document ).ready(function() {
 				data = "";
 			}
 			
-			console.log("Choices: "+choices);
+			//console.log("Choices: "+choices);
 			if(choices == "t" || choices == "")
 			{
 
@@ -331,7 +383,7 @@ $( document ).ready(function() {
 			//(5/50) × 100
 			if(isSupplementary){
 				counterSupplementary++;
-				console.log(counterSupplementary+" - "+totalSupplementary)
+				//console.log(counterSupplementary+" - "+totalSupplementary)
 				var progressSupp = ((counterSupplementary-1)/totalSupplementary)*100;
 				$("#txtProgress2").html("Your Progress in Supplementary Question");
 				$('#supplementaryBar').multiprogressbar({
@@ -346,7 +398,7 @@ $( document ).ready(function() {
 		}
 		//Check if its diagnostic or not
 		if(exmtle.indexOf("Diagnostic") !== -1){
-			console.log("Found")
+			//console.log("Found")
 			yearLevel = yrlvl - 1;
 		}else{
 			yearLevel = yrlvl;
@@ -404,7 +456,6 @@ $( document ).ready(function() {
 		        				isSubmitAnswer = true;
 		        			}
 
-
 		        		}else{
 		        			if(counterAnswer == totalPrimary ){
 
@@ -435,7 +486,6 @@ $( document ).ready(function() {
 		        						$("#pause").hide();
 		        						counterAnswer--;
 		        					}else{
-
 
 		        						$.each(data, function(index, element) {
 		        							if(element.message == "success")
@@ -535,7 +585,7 @@ $( document ).ready(function() {
 				currentTimer++;
 			}
 			arrQuestions[currentQuestion].time_to_answer = currentTimer;
-			console.log("Timer "+arrQuestions[currentQuestion].time_to_answer);
+			//console.log("Timer "+arrQuestions[currentQuestion].time_to_answer);
 			//RETURN THE POST HERE
 			$.ajax({ 
 				type: 'POST', 
