@@ -203,27 +203,27 @@
 													<td class="col-md-1"><h4>No</h4></td>
 												</tr>
 											</thead>									
-											<tbody>
+											<tbody id="learningSQ">
 												<tr>
-													<td><i class="glyphicon glyphicon-transfer"></i></td>
+													<td>Question1</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td>Question2</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-ok"></i></td>
+													<td>Question3</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td>Question4</td>
 													<td></td>
 													<td></td>
 													<td></td>
