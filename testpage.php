@@ -154,9 +154,9 @@
 						<div class="col-sm-12 col-md-12">
 							<div class="widget-box" >
 								<div class="widget-container">									
-									<p class="pull-right"><i class="glyphicon glyphicon-bell"></i> Time remaining <span id="timer"></span>									
+									<p id="examTimer" class="pull-right"><i class="glyphicon glyphicon-bell"></i> Time remaining <span id="timer"></span>									
 									</p>																
-									<div>
+									<div id="mathsquestions">
 										<div id="contentQuestion" style="min-height: 300px;">
 											<div id=""><h3 id="titleQuestion"></h3></div>
 											<img id="imgSource" src="" />
@@ -176,9 +176,68 @@
 											</div>
 										</div>		
 									</div>
+									<div id="learningSkills" class="hidesometin">
+										<!-- <div id="contentQuestion">											
+											<div id=""><h3 id="instructionTitle2"></h3></div>
+											<div id=""><h4 id="titleQuestion"></h4></div>
+											<div id="choices" class="choices"></div>
+										</div>
+										<div>
+											<div id="btnSkip" class="btn btn-warning">Skip</div>
+											<div id="btnNext" class="btn btn-primary">Next</div>																						
+											<div class="container" style="margin-left: 170px;">
+												<div id="txtProgress">Your Progress</div>
+												<div id="styled"></div>
+											</div>
+											<div class="container" style="width: 300px; margin-top: -49px; margin-left: 659px;">
+												<div id="txtProgress2"></div>
+												<div id="supplementaryBar"></div>
+											</div>
+										</div> -->		
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<td><h4 id="instructionTitle2"></h4></td>
+													<td class="col-md-1"><h4>Yes</h4></td>
+													<td class="col-md-1"><h4>Maybe</h4></td>
+													<td class="col-md-1"><h4>No</h4></td>
+												</tr>
+											</thead>									
+											<tbody>
+												<tr>
+													<td><i class="glyphicon glyphicon-transfer"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-ok"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>										
+												<tr>
+													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center container">
+											<div id="txtProgress">Your Progress</div>
+											<div id="styled"></div>
+										</div>
+									</div>
 								</div>
-								<p style="margin-top: 57px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
-								<div id="pause" style="display: block; background-color: orange; width: 12%; text-align: center; color: black; padding: 10px; font-size: 23px; cursor: pointer;">Pause and Return later</div>	
+								<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
+								<p style="margin-top: 17px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 							</div>
 						</div>								
 					</fieldset>
@@ -234,8 +293,22 @@ $( document ).ready(function() {
 		var counterSupplementary = 0;
 		var isSupplementary = false;
 
-		function timer() 
-		{
+		var stdyrlvl = parseInt(yrlvl);
+
+		// this is for learning style
+		if (exmtle == "Learning Style") {
+			$("#mathsquestions").remove();
+			$("#examTimer").addClass("hidesometin");
+			// $("#qnumbering").addClass("hidesometin");
+			$("#learningSkills").removeClass("hidesometin");
+		};
+		if (stdyrlvl<=6) {
+			$("#instructionTitle2").append("Questions for Children: ");
+		}else{
+			alert("this is for secondary");
+		};
+
+		function timer(){
 			count = count - 1;
 			if (count == -1) {
 				clearInterval(counter);
@@ -250,14 +323,13 @@ $( document ).ready(function() {
 		}
 
 		//Function to show Questions
-		showQuestion = function(num)
-		{	
-			console.log("Question Number "+num)
+		showQuestion = function(num){	
+			//console.log("Question Number "+num);
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
 			$("#titleQuestion").html(currentQuestionID+". "+element.question);
 			var choices = element.choices;
-			console.log(num+"Choices - "+choices);
+			//console.log(num+"Choices - "+choices);
 			var arrChoices = choices.split(",");
 			$("#choices").html("");
 			var imgsrc = "math assessment img/img_"+element.id+".JPG";
@@ -275,7 +347,7 @@ $( document ).ready(function() {
 				data = "";
 			}
 			
-			console.log("Choices: "+choices);
+			//console.log("Choices: "+choices);
 			if(choices == "t" || choices == "")
 			{
 
@@ -311,7 +383,7 @@ $( document ).ready(function() {
 			//(5/50) × 100
 			if(isSupplementary){
 				counterSupplementary++;
-				console.log(counterSupplementary+" - "+totalSupplementary)
+				//console.log(counterSupplementary+" - "+totalSupplementary)
 				var progressSupp = ((counterSupplementary-1)/totalSupplementary)*100;
 				$("#txtProgress2").html("Your Progress in Supplementary Question");
 				$('#supplementaryBar').multiprogressbar({
@@ -326,7 +398,7 @@ $( document ).ready(function() {
 		}
 		//Check if its diagnostic or not
 		if(exmtle.indexOf("Diagnostic") !== -1){
-			console.log("Found")
+			//console.log("Found")
 			yearLevel = yrlvl - 1;
 		}else{
 			yearLevel = yrlvl;
@@ -384,7 +456,6 @@ $( document ).ready(function() {
 		        				isSubmitAnswer = true;
 		        			}
 
-
 		        		}else{
 		        			if(counterAnswer == totalPrimary ){
 
@@ -416,7 +487,6 @@ $( document ).ready(function() {
 		        						counterAnswer--;
 		        					}else{
 
-
 		        						$.each(data, function(index, element) {
 		        							if(element.message == "success")
 		        							{
@@ -443,48 +513,48 @@ $( document ).ready(function() {
 		        					$('#supplementaryBar').multiprogressbar({
 		        						parts:[{value: progressSupp, text: true, barClass: "gradient", textClass: "redText"}]
 		        					});
-/*
+									/*
 						        	$('#styleSupplementary').multiprogressbar({
 										parts:[{value: 0, text: true, barClass: "blue", textClass: "redText"}]
 									});
-*/
+									*/
 
-counterAnswer++;
-currentQuestion++;
-$("#counterAnswerTxt").html(counterAnswer);
-showQuestion(currentQuestion);
-}
-});
-}
-else
-{
-	currentQuestion++;
-	counterAnswer++;
-	showQuestion(currentQuestion)
-	$("#counterAnswerTxt").html(counterAnswer);
-}
-}
-else
-{
-	dialog3.dialog( "open" );
-}
-}
-$("#btnSkip").click(function()
-{
-	currentAnswerValue = "skip"
-	submitAnswer(currentAnswerValue)					 
-});
+		counterAnswer++;
+		currentQuestion++;
+		$("#counterAnswerTxt").html(counterAnswer);
+		showQuestion(currentQuestion);
+		}
+		});
+		}
+		else
+		{
+			currentQuestion++;
+			counterAnswer++;
+			showQuestion(currentQuestion)
+			$("#counterAnswerTxt").html(counterAnswer);
+		}
+		}
+		else
+		{
+			dialog3.dialog( "open" );
+		}
+		}
+		$("#btnSkip").click(function()
+		{
+			currentAnswerValue = "skip"
+			submitAnswer(currentAnswerValue)					 
+		});
 
-$("#btnNext").click(function()
-{	
-	submitAnswer(currentAnswerValue)
-});
+		$("#btnNext").click(function()
+		{	
+			submitAnswer(currentAnswerValue)
+		});
 
-$("#counterAnswerTxt").html(counterAnswer);
-showQuestion(currentQuestion);
+		$("#counterAnswerTxt").html(counterAnswer);
+		showQuestion(currentQuestion);
 
-}
-});
+		}
+		});
 		//Save Answer temporarily
 		saveAnswer = function(me){
 			var id = arrQuestions[currentQuestion].id;
@@ -515,7 +585,7 @@ showQuestion(currentQuestion);
 				currentTimer++;
 			}
 			arrQuestions[currentQuestion].time_to_answer = currentTimer;
-			console.log("Timer "+arrQuestions[currentQuestion].time_to_answer);
+			//console.log("Timer "+arrQuestions[currentQuestion].time_to_answer);
 			//RETURN THE POST HERE
 			$.ajax({ 
 				type: 'POST', 
@@ -531,125 +601,115 @@ showQuestion(currentQuestion);
 			});
 		}
 
-/*
-		$("#btnFlag").click(function(){
+		/*
+				$("#btnFlag").click(function(){
+					
+					var mymessage = prompt("Please tell us what's wrong with this question.", "");
+		if (mymessage != null) {
+			var id = arrQuestions[currentQuestion].id;
+					$.post( "_flagforreview.php", { questionId: id, flagged_message:mymessage})
+					.done(function( data ) {	
+						$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
+					});
+		}
 			
-			var mymessage = prompt("Please tell us what's wrong with this question.", "");
-if (mymessage != null) {
-	var id = arrQuestions[currentQuestion].id;
-			$.post( "_flagforreview.php", { questionId: id, flagged_message:mymessage})
+				});
+		*/
+
+		///Dialog
+		var dialog,dialog2, form, flagged_message = $( "#flagged_message" )
+
+		function addUser() {
+
+			var id = arrQuestions[currentQuestion].id;
+			$.post( "_flagforreview.php", { questionId: id, flagged_message:flagged_message.val()})
 			.done(function( data ) {	
 				$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
+				dialog.dialog( "close" );
 			});
-}
 
-
-		
-		});
-*/
-
-///Dialog
-var dialog,dialog2, form, flagged_message = $( "#flagged_message" )
-
-function addUser() {
-
-	var id = arrQuestions[currentQuestion].id;
-	$.post( "_flagforreview.php", { questionId: id, flagged_message:flagged_message.val()})
-	.done(function( data ) {	
-		$("#btnFlag").html('<i class="glyphicon glyphicon-flag"></i> Flagged')
-		dialog.dialog( "close" );
-	});
-
-	return true;
-}
-pauseAssessment = function(){
-	dialog2.dialog( "close" );
-	window.location.href = "assessmentsetup.php";
-	clearTimeout(myVar);
-	$(".widget-container").hide();
-	$("#pause").html("Resume");
-}
-dialog = $( "#dialog-form" ).dialog({
-	autoOpen: false,
-	height: 300,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Report": addUser,
-		Cancel: function() {
-			dialog.dialog( "close" );
+			return true;
 		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
-
-form = dialog.find( "form" ).on( "submit", function( event ) {
-	event.preventDefault();
-	addUser();
-});
-
-dialog2 = $( "#dialogPause" ).dialog({
-	autoOpen: false,
-	height: 200,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Yes": pauseAssessment,
-		"No": function() {
+		pauseAssessment = function(){
 			dialog2.dialog( "close" );
+			window.location.href = "assessmentsetup.php";
+			clearTimeout(myVar);
+			$(".widget-container").hide();
+			$("#pause").html("Resume");
 		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
+		dialog = $( "#dialog-form" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Report": addUser,
+				Cancel: function() {
+					dialog.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
-dialog3 = $( "#dialogAlert" ).dialog({
-	autoOpen: false,
-	height: 150,
-	width: 350,
-	modal: true,
-	buttons: {
-		"Ok": function() {
-			dialog3.dialog( "close" );
-		}
-	},
-	close: function() {
-		form[ 0 ].reset();
-	}
-});
+		form = dialog.find( "form" ).on( "submit", function( event ) {
+			event.preventDefault();
+			addUser();
+		});
 
-form = dialog.find( "form" ).on( "submit", function( event ) {
-	event.preventDefault();
-	addUser();
-});
+		dialog2 = $( "#dialogPause" ).dialog({
+			autoOpen: false,
+			height: 200,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Yes": pauseAssessment,
+				"No": function() {
+					dialog2.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
+		dialog3 = $( "#dialogAlert" ).dialog({
+			autoOpen: false,
+			height: 150,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Ok": function() {
+					dialog3.dialog( "close" );
+				}
+			},
+			close: function() {
+				form[ 0 ].reset();
+			}
+		});
 
+		form = dialog.find( "form" ).on( "submit", function( event ) {
+			event.preventDefault();
+			addUser();
+		});
 
+		$("#btnFlag").click(function(){
+			dialog.dialog( "open" );
+		})
 
-$("#btnFlag").click(function(){
-	dialog.dialog( "open" );
-})
+		$("#pause").click(function(){
+			if($("#pause").html() == "Resume"){
+				$("#pause").html("Pause and Return later");
+				$(".widget-container").show();
+				myVar = setInterval(myTimer, 1000);
 
-$("#pause").click(function(){
-	if($("#pause").html() == "Resume"){
-		$("#pause").html("Pause and Return later");
-		$(".widget-container").show();
-		myVar = setInterval(myTimer, 1000);
+			}else{
+				dialog2.dialog( "open" );
+			}
+		});
 
-	}else{
-		dialog2.dialog( "open" );
-	}
-});
-
-
-
-
-
-
-});
+		});
 </script>
 </body>
 </html>

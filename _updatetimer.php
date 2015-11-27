@@ -12,11 +12,7 @@
 	 $row = $db->query_update("tbltemporarygenexam",$DATA,"question_id='".$question_id."' and student_id='".$student_id."'");
 	 echo $row;
 
-
-
-	
 	//echo json_encode($json);
 	mysql_close();
 	
-		
  ?>
