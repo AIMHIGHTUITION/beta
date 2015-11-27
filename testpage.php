@@ -206,27 +206,27 @@
 											<tbody id="learningSQ">
 												<tr>
 													<td>Question1</td>
-													<td></td>
-													<td></td>
-													<td></td>
+													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
 													<td>Question2</td>
-													<td></td>
-													<td></td>
-													<td></td>
+													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios1" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
 													<td>Question3</td>
-													<td></td>
-													<td></td>
-													<td></td>
+													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios2" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>										
 												<tr>
 													<td>Question4</td>
-													<td></td>
-													<td></td>
-													<td></td>
+													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios1" value="option1"></td>
+													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios2" value="option2"></td>
+													<td><input type="radio" name="optionsRadios3" class="form-control" id="optionsRadios3" value="option3"></td>
 												</tr>
 											</tbody>
 										</table>
