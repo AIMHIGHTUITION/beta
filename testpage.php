@@ -203,27 +203,27 @@
 													<td class="col-md-1"><h4>No</h4></td>
 												</tr>
 											</thead>									
-											<tbody>
+											<tbody id="learningSQ">
 												<tr>
-													<td><i class="glyphicon glyphicon-transfer"></i></td>
+													<td>Question1</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td>Question2</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-ok"></i></td>
+													<td>Question3</td>
 													<td></td>
 													<td></td>
 													<td></td>
 												</tr>										
 												<tr>
-													<td><i class="glyphicon glyphicon-refresh"></i></td>
+													<td>Question4</td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -237,7 +237,7 @@
 									</div>
 								</div>
 								<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
-								<p style="margin-top: 17px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
+								<p style="margin-top: 7px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 							</div>
 						</div>								
 					</fieldset>
