@@ -14,7 +14,7 @@
 	$id = $_SESSION['id']; //login user ID
 	$sessionType = $_SESSION['type']; 
 
-	$resource = "SELECT tbllearningcategories.year as year, tbllearningtopics.name as name, tblresources.pdf_name as pdfname, tblresources.id as pdfID
+	$resource = "SELECT tbllearningcategories.year as year, tbllearningtopics.name as name, tblresources.pdf_name as pdfname
 	FROM tblresources INNER JOIN tblminoroutcome ON tblresources.minor_outcomes_id=tblminoroutcome.id
 	RIGHT JOIN tblmajoroutcome ON tblminoroutcome.major_outcome_id=tblmajoroutcome.id 
 	RIGHT JOIN tbllearningcategories ON tblmajoroutcome.learning_categories_id=tbllearningcategories.id 
@@ -147,7 +147,7 @@
 											echo "<tr>
 											<td>$record[year]</td>
 											<td>$record[name]</td>
-											<td>$record[pdfname] = $record[pdfID]</td>
+											<td>$record[pdfname]</td>
 											<td>					
 												<button class='btn btn-sm btn-success'><i class='glyphicon glyphicon-eye-open'></i>View</button>			
 												<button class='btn btn-sm btn-primary'><i class='glyphicon glyphicon-print'></i>Print</button>

@@ -130,8 +130,7 @@
 									<td class="cell-sm">Action</td>
 								</tr>
 							</thead>
-							<tbody id="recentAssessPanel">
-								
+							<tbody id="recentAssessPanel">								
 							</tbody>
 						</table>
 					</div>	
@@ -160,8 +159,7 @@
 
 								$studentUsername = "SELECT fname FROM tblstudents where id='$id'";
 								$record = $db->query_first($studentUsername);
-								echo $record['fname'].",";								
-
+								echo $record['fname'].",";		
 							}
 							?>
 							just click the assessment title to learn more.
@@ -529,7 +527,8 @@
 							</div>
 							<!-- Third accordion -->
 							<div class="panel panel-default">
-								<div class="panel-heading accordion-toggle assmntTitle" data-toggle="collapse" data-parent="#accordion2" href="#ssassmnt3">
+								<div class="panel-heading accordion-toggle assmntTitle" data-toggle="collapse" data-parent="#accordion2">
+									 <!-- href="#ssassmnt3" -->
 									<h5 class="panel-title">
 										<a>English Diagnostic Test...<span class="comesoon">Coming Soon!</span></a>
 									</h5>
@@ -793,12 +792,10 @@
 							var r = confirm("Please complete your current exam in progress before starting a new one");
 						}
 					});
-				
-	
+
 			}else{
 
 				var assmentTitleStd = $(this).parent().closest(".panel").find(".panel-title a").text();	
-
 				window.location = "testpage.php?type='"+assessment_typeid+"'&id=<?php echo"$id"; ?>&yrlvl=<?php echo"$yearLvl"; ?>&exmtle="+assmentTitleStd;
 
 			}
@@ -806,7 +803,7 @@
 		})
 		//Function to show Recent Assessment
 		showRecentResult = function(element){
-//			$("#recentAssessPanel").html();
+		//$("#recentAssessPanel").html();
 				var assmentTitleStd = element.subject+' '+element.type;
 				var studentName = element.firstname;
 			

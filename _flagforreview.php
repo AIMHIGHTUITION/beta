@@ -10,4 +10,5 @@
 	$where = "id=".$questionID;
 	$row = $db->query_update("tblquestions",$data,$where);
 	mysql_close();
+	
  ?>
