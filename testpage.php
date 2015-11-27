@@ -197,7 +197,7 @@
 										<table class="table table-hover">
 											<thead>
 												<tr>
-													<td><h3 id="instructionTitle2"></h3></td>
+													<td><h4 id="instructionTitle2"></h4></td>
 													<td class="col-md-1"><h4>Yes</h4></td>
 													<td class="col-md-1"><h4>Maybe</h4></td>
 													<td class="col-md-1"><h4>No</h4></td>
