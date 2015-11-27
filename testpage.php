@@ -237,7 +237,7 @@
 									</div>
 								</div>
 								<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
-								<p style="margin-top: 17px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
+								<p style="margin-top: 7px"><a id="btnFlag" style="cursor: pointer;"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 							</div>
 						</div>								
 					</fieldset>
