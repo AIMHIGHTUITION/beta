@@ -247,7 +247,7 @@
 											<div id="styled" class="progress progress-striped active"></div>
 										</div>
 									</div>
-									<button id="pause" class="btn btn-danger center-block">Pause and Return later</button>
+									<button id="pause" class="btn btn-danger center-block">Leave</button>
 									<p><a id="btnFlag"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 								</div>								
 							</div>
@@ -314,10 +314,10 @@ $( document ).ready(function() {
 			// $("#qnumbering").addClass("hidesometin");
 			$("#learningSkills").removeClass("hidesometin");
 		};
-		if (stdyrlvl<=6) {
+		if (exmtle=="Learning Style" && stdyrlvl<=6) {
 			$("#instructionTitle2").append("Questions for Children: ");
 		}else{
-			alert("this is for secondary");
+			// alert("this is for secondary");
 		};
 
 		function timer(){
@@ -365,23 +365,19 @@ $( document ).ready(function() {
 			}
 			
 			//console.log("Choices: "+choices);
-			if(choices == "t" || choices == "")
-			{
+			if(choices == "t" || choices == ""){
 
 				$("#instructionTitle").html("Type Your Answer");
 				$("#choices").append("<input data='"+num+"' style='width: 200px; height: 29px;' onkeyup=saveAnswer(this) type='text' name='"+num+"' value='"+data+"' >");
 
 			} 
-			else if(choices == "i")
-			{
+			else if(choices == "i"){
 				$("#instructionTitle").html("Type Your Answer");
 				$("#choices").append("<input data='"+num+"' style='width: 200px; height: 29px;' onkeyup=saveAnswer(this) type='text' name='"+num+"' value='"+data+"' >");
 			} 
-			else if(arrChoices.length >= 1)
-			{	
+			else if(arrChoices.length >= 1){	
 				$("#instructionTitle").html("Choose your Answer");
-				for(var i = 0; i < arrChoices.length; i++)
-				{
+				for(var i = 0; i < arrChoices.length; i++){
 					if(data == arrChoices[i]){
 						$("#choices").append("<input data='"+num+"' checked='checked' onclick=saveAnswer(this) type='radio' name='"+num+"' value='"+arrChoices[i]+"' >"+arrChoices[i]);
 					}else{
