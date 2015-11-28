@@ -9,6 +9,13 @@
 	$year = $_POST["year"];
 	$asstype = $_POST["asstype"];
 	$exmtle = $_POST["exmtle"];
+	$tblvalue = "";
+
+	if($exmtle=="Learning Style"){
+		$tblvalue="learning_style_questions";
+	}else{
+		$tblvalue="tblquestions";
+	};
 
 	$sqlHasExam = "Select B.id as QUESTION_ID, B.question as question, B.choices as choices, A.answer as answer,A.time_to_answer as time_to_answer,B.flagged_for_review as flagged_for_review  from tbltemporarygenexam as A left outer join tblquestions as B on A.question_id=B.id where A.student_id='".$studenId."' and assessment_type_id='".$asstype."' and A.status IS NULL ";
 	
