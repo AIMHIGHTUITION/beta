@@ -177,23 +177,6 @@
 										</div>		
 									</div>
 									<div id="learningSkills" class="hidesometin">
-										<!-- <div id="contentQuestion">											
-											<div id=""><h3 id="instructionTitle2"></h3></div>
-											<div id=""><h4 id="titleQuestion"></h4></div>
-											<div id="choices" class="choices"></div>
-										</div>
-										<div>
-											<div id="btnSkip" class="btn btn-warning">Skip</div>
-											<div id="btnNext" class="btn btn-primary">Next</div>																						
-											<div class="container" style="margin-left: 170px;">
-												<div id="txtProgress">Your Progress</div>
-												<div id="styled"></div>
-											</div>
-											<div class="container" style="width: 300px; margin-top: -49px; margin-left: 659px;">
-												<div id="txtProgress2"></div>
-												<div id="supplementaryBar"></div>
-											</div>
-										</div> -->
 										<table class="table table-hover">
 											<thead>
 												<tr>
@@ -322,9 +305,14 @@ $( document ).ready(function() {
 			$("#pause").removeClass("ashpauseandreturn").addClass("hidesometin");
 			$("#qnumbering").addClass("hidesometin");
 		};
-		if (exmtle=="Learning Style" && stdyrlvl<=6) {
+		if (exmtle=="Learning Style" && stdyrlvl<=6) { //primary year student
+			var qcount = 0;
 			$("#instructionTitle2").append("Questions for Children: ");
-		}else{
+			function LsShowQuestion() {
+				
+			}
+
+		}else if(exmtle=="Learning Style"){ //secondary
 			// alert("this is for secondary");
 		};
 
