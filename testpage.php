@@ -193,7 +193,7 @@
 												<div id="txtProgress2"></div>
 												<div id="supplementaryBar"></div>
 											</div>
-										</div> -->		
+										</div> -->
 										<table class="table table-hover">
 											<thead>
 												<tr>
@@ -247,7 +247,11 @@
 											<div id="styled" class="progress progress-striped active"></div>
 										</div>
 									</div>
-									<button id="pause" class="btn btn-danger center-block">Leave</button>
+									<div id="lstylecontrols">
+										<button id="pauseLS" class="btn btn-danger hidesometin">Pause and Return Later</button>
+										<button id="nextQuest" class="btn btn-primary pull-right hidesometin">Next</button>
+									</div>
+									<div id="pause" class="ashpauseandreturn">Pause and Return later</div>	
 									<p><a id="btnFlag"><i class="glyphicon glyphicon-flag"></i> See a problem with this question? Click here to report</a><span id="qnumbering" class="pull-right">Question <span id="counterAnswerTxt">0</span></span></p>
 								</div>								
 							</div>
@@ -285,7 +289,7 @@ $( document ).ready(function() {
 		var counter 
 		var questionCounter = 0;
 		var Studentid = "<?PHP echo $_GET["id"]; ?>";
-		var asstype = "<?PHP echo $_GET["type"]; ?>";
+		var asstype = "<?PHP echo $_GET["type"]; ?>"; //assessment_type_id
 		var yrlvl = "<?PHP echo $_GET["yrlvl"]; ?>";
 		var exmtle = "<?PHP echo $_GET["exmtle"]; ?>";
 		var counterAnswer = 0;
@@ -311,8 +315,12 @@ $( document ).ready(function() {
 		if (exmtle == "Learning Style") {
 			$("#mathsquestions").remove();
 			$("#examTimer").addClass("hidesometin");
-			// $("#qnumbering").addClass("hidesometin");
+			$("#btnFlag").remove();
 			$("#learningSkills").removeClass("hidesometin");
+			$("#nextQuest").removeClass("hidesometin");
+			$("#pauseLS").removeClass("hidesometin");
+			$("#pause").removeClass("ashpauseandreturn").addClass("hidesometin");
+			$("#qnumbering").addClass("hidesometin");
 		};
 		if (exmtle=="Learning Style" && stdyrlvl<=6) {
 			$("#instructionTitle2").append("Questions for Children: ");
@@ -340,11 +348,6 @@ $( document ).ready(function() {
 			var element = arrQuestions[num];
 			currentQuestionID = element.id;
 			$("#titleQuestion").html(currentQuestionID+". "+element.question);
-			$("#titleQuestion1").html(currentQuestionID+". "+element.question);
-			$("#titleQuestion2").html(currentQuestionID+". "+element.question);
-			$("#titleQuestion3").html(currentQuestionID+". "+element.question);
-			$("#titleQuestion4").html(currentQuestionID+". "+element.question);
-			$("#titleQuestion5").html(currentQuestionID+". "+element.question);
 			var choices = element.choices;
 			//console.log(num+"Choices - "+choices);
 			var arrChoices = choices.split(",");
