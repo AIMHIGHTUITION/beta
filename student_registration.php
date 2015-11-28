@@ -56,8 +56,23 @@
 											<div class="col-sm-12">
 												<div class="row">
 													<div class="form-group col-md-6">
-														<label class="control-label" for="yearlvl">Year Level</label>
-														<input type="text" id="yearlvl" name="yearlvl[]" required="required" class="form-control" maxlength="1">														
+														<label class="control-label" for="yearlvl">Year Level</label>					
+														<select id="yearlvl" name="yearlvl[]" class="form-control" required="required">
+															<option value="" disabled selected>Please select year level</option>
+															<option value="F">F</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+															<option value="6">6</option>
+															<option value="7">7</option>
+															<option value="8">8</option>
+															<option value="9">9</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
 													</div>
 													<div class="customMtop col-md-6">
 														<button type="button" id="addStd" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i>Add</button>
