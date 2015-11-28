@@ -51,10 +51,6 @@
 												<label class="control-label" for="email">Email</label>
 												<input type="email" id="email" name="email" required="required" class="form-control">
 											</div>
-											<!-- <div class="form-group">
-												<label class="control-label" for="username">Username</label>
-												<input type="text" id="username" name="username" required="required" class="form-control">
-											</div> -->
 											<div class="form-group">
 												<label class="control-label" for="password">Password</label> 
 												<input type="password" id="password" name="password" required="required" class="form-control" maxlength="6" />
@@ -64,38 +60,8 @@
 												<input type="password" id="confirm_password" name="confirm_pass" required="required" class="form-control" maxlength="6"/>
 												<div id="divCheckPasswordMatch"></div>
 											</div>
-										</div> 
-										<!-- <div class="hidesometin step2">
-											<h3>Student Details:</h3>
-											<div class="form-group">
-												<label class="control-label" for="student-fname">First Name</label>
-												<input type="text" id="student-fname" name="student-fname" required="required" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label" for="student-lname">Last Name</label>
-												<input type="text" id="student-lname" name="student-lname" required="required" class="form-control">
-											</div>
-											<div class="col-sm-12">
-												<div class="row">
-													<div class="form-group col-md-6">
-														<label class="control-label" for="yearlvl">Year Level</label>
-														<input type="text" id="yearlvl" name="yearlvl" required="required" class="form-control" maxlength="1">														
-													</div>
-													<div class="customMtop col-md-6">
-														<button id="addStd" class="btn btn-success">Add (+)</button>
-													</div>
-												</div>
-											</div>
-										</div> --> 	           					
+										</div>          					
 									</div>
-									<!-- <div class="hidesometin step2">
-										<div class="clearfix text-center"> 
-											<p class="clickedit">By clicking Create your account button, you agree to our <a href="#" target="_blank"> terms of service </a> and  <a href="#" target="_blank">conditions.</a></p>
-										</div>	
-										<div id="regCom" class="actions text-center">
-											<input type="submit" id="create-account" tabindex="9" class="btn btn-primary" value="Create your Account" disabled="disabled">
-										</div>	   									
-									</div> -->
 								</div>
 								<div class="step1 col-sm-12 col-md-6">
 									<div class="widget-box">
@@ -125,21 +91,6 @@
 											<label class="control-label" for="phone_number">Phone number</label>
 											<input type="text" name="phone_number" id="phone_number" required="required" class="form-control" maxlength="10" >
 										</div>
-										<!-- <div class="hidesometin step2">
-											<div class="form-group">
-												<label class="control-label" for="student-username">Username</label>
-												<input type="text" id="student-username" name="student-username" required="required" class="form-control">
-											</div>
-											<div class="form-group">
-												<label class="control-label" for="student-pass">Password</label> 
-												<input type="password" id="student-pass" name="student-pass" required="required" class="form-control"/>
-											</div>
-											<div class="form-group">
-												<label class="control-label" for="student-conpas">Confirm Password</label> 
-												<input type="password" id="student-conpas" name="student-conpas" required="required" class="form-control"/>
-												<div id="studentPassMatch"></div>
-											</div>   
-										</div> -->
 									</div>
 								</div>
 								<div class="step1">
@@ -160,7 +111,6 @@
 			</footer>
 		</div>
 	</div><!-- Main Container ends here -->
-
 	<!-- Important js put in all pages -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>
@@ -168,14 +118,11 @@
 	</script>
 	<script src="js/bootstrap.min.js"></script>
 	<!-- Important js for all pages end  -->
-
 	<!-- Fix plugins -->
 	<script type="text/javascript" src="js/ios-orientationchange-fix.js"></script>
-
 	<!-- Init plugins and custom javascript-->
 	<script src="js/custom.js"></script>
 	<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-
 	<script type="text/javascript">
 	$(document).ready(function () {
 

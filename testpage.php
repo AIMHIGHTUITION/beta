@@ -306,12 +306,7 @@ $( document ).ready(function() {
 			$("#qnumbering").addClass("hidesometin");
 		};
 		if (exmtle=="Learning Style" && stdyrlvl<=6) { //primary year student
-			var qcount = 0;
 			$("#instructionTitle2").append("Questions for Children: ");
-			function LsShowQuestion() {
-				
-			}
-
 		}else if(exmtle=="Learning Style"){ //secondary
 			// alert("this is for secondary");
 		};
