@@ -1581,3 +1581,13 @@ content: "\e114";
 .customMtop{margin-top: 25px;}
 .comesoon{color: #0086F9;}
 #learningSQ tr td{font-size: 14px;}
+.ashpauseandreturn{
+	display: block; 
+	background-color: orange; 
+	width: 12%; 
+	text-align: center; 
+	color: black; 
+	padding: 10px; 
+	font-size: 23px; 
+	cursor: pointer;
+}
